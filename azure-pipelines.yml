@@ -1,0 +1,26 @@
+# Azure Pipeline Definition
+# Echoes the current date/time and displays all environment variables
+
+trigger:
+- main
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    echo "========================================="
+    echo "Current Date and Time:"
+    echo "========================================="
+    date
+    echo ""
+  displayName: 'Display Current Date and Time'
+
+- script: |
+    echo "========================================="
+    echo "All Environment Variables:"
+    echo "========================================="
+    printenv | sort
+    echo ""
+  displayName: 'Display All Environment Variables'
